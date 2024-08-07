@@ -31,19 +31,8 @@ docker-compose exec -it app ./vendor/bin/openapi src/ -o openapi.json
 Para fazer o upload de um documento:
 
 ```sh
-curl -X POST http://localhost/api/upload -F 'documento=@/caminho/para/seu/documento.png'
+curl -X POST http://localhost/api/upload -F 'documento=@/caminho/para/seu/contrato.png'
 ```
-
-### Desenvolvimento
-
-Para rodar a aplicação localmente, certifique-se de que os containers Docker estão em execução e acesse `http://localhost` no seu navegador.
-
-#### Lista de serviços:
-
-- **PHP**: porta `80`
-- **MySQL**: porta `3306`
-- **phpMyAdmin**: porta `8000`
-- **Swagger**: porta `8080`
 
 ### Testes
 
@@ -64,5 +53,17 @@ docker-compose exec -it app php bin/console doctrine:migrations:migrate --env=te
 3. Execute os testes:
 
 ```sh
-docker-compose exec -it app php bin/phpunit
+docker-compose exec app php bin/phpunit
 ```
+
+### Desenvolvimento
+
+Para rodar a aplicação localmente, certifique-se de que os containers Docker estão em execução e acesse `http://localhost` no seu navegador.
+
+#### Lista de serviços:
+
+- **PHP**: porta `80`
+- **MySQL**: porta `3306`
+- **phpMyAdmin**: porta `8000`
+- **Swagger**: porta `8080`
+
