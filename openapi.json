@@ -1,0 +1,88 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Contrato API",
+        "description": "Contrato API",
+        "contact": {
+            "name": "Contrato API Team"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://localhost/",
+            "description": "API server"
+        }
+    ],
+    "paths": {
+        "/api/upload": {
+            "post": {
+                "tags": [
+                    "contrato"
+                ],
+                "summary": "Upload a document",
+                "operationId": "bf2445031d80612461525b050b987d33",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "documento": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Documento enviado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "Documento enviado com sucesso"
+                                        },
+                                        "documento": {
+                                            "type": "string",
+                                            "example": "Texto do documento"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "Falha ao enviar documento"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "contrato",
+            "description": "contrato"
+        }
+    ]
+}

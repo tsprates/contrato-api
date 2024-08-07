@@ -1,0 +1,63 @@
+services:
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:8000"
+    volumes:
+      - .:/app
+    networks:
+      - contrato-api-net
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=secret
+      - DB_NAME=contrato_api
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: contrato_api
+    volumes:
+      - db-data:/var/lib/mysql:rw
+    networks:
+      - contrato-api-net
+
+  admin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: admin
+    restart: always
+    ports:
+      - "8000:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: secret
+      PMA_ARBITRARY: 1
+    depends_on:
+      - db
+    networks:
+      - contrato-api-net
+
+  docs:
+    image: swaggerapi/swagger-ui
+    container_name: docs
+    volumes:
+      - .:/app
+    environment:
+      - SWAGGER_JSON=/app/openapi.json
+    ports:
+      - 8080:8080
+
+networks:
+  contrato-api-net:
+
+volumes:
+  contrato-api:
+  db-data:
