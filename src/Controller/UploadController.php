@@ -28,14 +28,12 @@ class UploadController
 {
     private LoggerInterface $logger;
     private string $uploadDirectory;
-    private UrlGeneratorInterface $urlGenerator;
     private ContratoRepository $contratoRepository;
 
-    public function __construct(LoggerInterface $logger, UrlGeneratorInterface $urlGenerator, ContratoRepository $contratoRepository)
+    public function __construct(LoggerInterface $logger, ContratoRepository $contratoRepository)
     {
         $this->logger = $logger;
         $this->uploadDirectory = realpath(dirname(__DIR__) . '/../public/uploads/');
-        $this->urlGenerator = $urlGenerator;
         $this->contratoRepository = $contratoRepository;
     }
 

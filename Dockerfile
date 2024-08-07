@@ -1,5 +1,7 @@
 FROM ubuntu:22.04
 
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
 WORKDIR /app
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -21,6 +23,7 @@ RUN apt-get update \
     && apt-get install -y \
     php8.3 \
     php8.3-xml \
+    php8.3-mbstring \
     php8.3-mysql \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

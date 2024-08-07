@@ -10,8 +10,6 @@ use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
-use Faker\Core\DateTime as CoreDateTime;
-use IntlDateFormatter;
 
 class AppFixtures extends Fixture
 {
@@ -27,7 +25,7 @@ class AppFixtures extends Fixture
     private function loadFixture(ObjectManager $manager, $faker)
     {
         $contrato = new Contrato();
-        $contrato->setData($this->randomDate($faker));
+        $contrato->setData(date("d \d\e F \d\e Y"));
         $contrato->setImagem("http://localhost/uploads/exemplo.jpg");
 
         $contratado = new Contratado();
@@ -64,17 +62,5 @@ class AppFixtures extends Fixture
 
         $manager->persist($contrato);
         $manager->flush();
-    }
-
-    private function randomDate($faker)
-    {
-        $formatter = new IntlDateFormatter(
-            'pt_BR',
-            IntlDateFormatter::FULL,
-            IntlDateFormatter::NONE,
-            'America/Sao_Paulo',
-            IntlDateFormatter::GREGORIAN
-        );
-        return $formatter->format($faker->dateTime());
     }
 }

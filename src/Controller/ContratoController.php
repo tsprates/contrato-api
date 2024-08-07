@@ -13,9 +13,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use OpenApi\Attributes as OA;
 
-class DocumentoController extends AbstractController
+class ContratoController extends AbstractController
 {
     #[Route('/', methods: ['GET'])]
+    #[Route('/contratos', methods: ['GET'])]
     #[OA\Get(
         path: "/",
         summary: "Lista todos os contratos",
@@ -95,7 +96,7 @@ class DocumentoController extends AbstractController
         return new JsonResponse(["data" => $result]);
     }
 
-    #[Route('/contrato/{id}', methods: ['GET'])]
+    #[Route('/contratos/{id}', methods: ['GET'])]
     #[OA\Get(
         path: "/contrato/{id}",
         summary: "Obtém um contrato pelo ID",
@@ -239,7 +240,7 @@ class DocumentoController extends AbstractController
 
     private function formatClausulas(array $clausulas): array
     {
-        return array_map(fn($clausula) => [
+        return array_map(fn ($clausula) => [
             'id' => $clausula->getId(),
             'texto' => $clausula->getTexto()
         ], $clausulas);

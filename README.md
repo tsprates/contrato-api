@@ -45,4 +45,24 @@ Para rodar a aplicação localmente, certifique-se de que os containers Docker e
 - **phpMyAdmin**: porta `8000`
 - **Swagger**: porta `8080`
 
+### Testes
 
+Utilize os seguintes comandos:
+
+1. Crie o banco de dados de teste:
+
+```sh
+docker-compose exec -it app php bin/console doctrine:database:create --env=test
+```
+
+2. Execute as migrações no banco de dados de teste:
+
+```sh
+docker-compose exec -it app php bin/console doctrine:migrations:migrate --env=test
+```
+
+3. Execute os testes:
+
+```sh
+docker-compose exec -it app php bin/phpunit
+```
