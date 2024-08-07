@@ -15,6 +15,257 @@
         }
     ],
     "paths": {
+        "/": {
+            "get": {
+                "tags": [
+                    "Contratos"
+                ],
+                "summary": "Lista todos os contratos",
+                "description": "Retorna uma lista de todos os contratos no sistema.",
+                "operationId": "a50b4a3da5e4731af5ede1d9823b4173",
+                "responses": {
+                    "200": {
+                        "description": "Lista de contratos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "data": {
+                                                        "type": "string"
+                                                    },
+                                                    "contratante": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "nome": {
+                                                                "type": "string"
+                                                            },
+                                                            "cpf_cnpj": {
+                                                                "type": "string"
+                                                            },
+                                                            "rg": {
+                                                                "type": "string"
+                                                            },
+                                                            "cep": {
+                                                                "type": "string"
+                                                            },
+                                                            "rua": {
+                                                                "type": "string"
+                                                            },
+                                                            "bairro": {
+                                                                "type": "string"
+                                                            },
+                                                            "cidade": {
+                                                                "type": "string"
+                                                            },
+                                                            "estado": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "contratado": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "nome": {
+                                                                "type": "string"
+                                                            },
+                                                            "cpf_cnpj": {
+                                                                "type": "string"
+                                                            },
+                                                            "rg": {
+                                                                "type": "string"
+                                                            },
+                                                            "cep": {
+                                                                "type": "string"
+                                                            },
+                                                            "rua": {
+                                                                "type": "string"
+                                                            },
+                                                            "bairro": {
+                                                                "type": "string"
+                                                            },
+                                                            "cidade": {
+                                                                "type": "string"
+                                                            },
+                                                            "estado": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "clausulas": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "texto": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contrato/{id}": {
+            "get": {
+                "tags": [
+                    "Contratos"
+                ],
+                "summary": "Obtém um contrato pelo ID",
+                "description": "Retorna os detalhes de um contrato específico com base no ID fornecido.",
+                "operationId": "04836b8b358ba3cc0b9d1abb787927cf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do contrato",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalhes do contrato",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "type": "string"
+                                        },
+                                        "contratante": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "nome": {
+                                                    "type": "string"
+                                                },
+                                                "cpf_cnpj": {
+                                                    "type": "string"
+                                                },
+                                                "rg": {
+                                                    "type": "string"
+                                                },
+                                                "cep": {
+                                                    "type": "string"
+                                                },
+                                                "rua": {
+                                                    "type": "string"
+                                                },
+                                                "bairro": {
+                                                    "type": "string"
+                                                },
+                                                "cidade": {
+                                                    "type": "string"
+                                                },
+                                                "estado": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "contratado": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "nome": {
+                                                    "type": "string"
+                                                },
+                                                "cpf_cnpj": {
+                                                    "type": "string"
+                                                },
+                                                "rg": {
+                                                    "type": "string"
+                                                },
+                                                "cep": {
+                                                    "type": "string"
+                                                },
+                                                "rua": {
+                                                    "type": "string"
+                                                },
+                                                "bairro": {
+                                                    "type": "string"
+                                                },
+                                                "cidade": {
+                                                    "type": "string"
+                                                },
+                                                "estado": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "clausulas": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "texto": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Contrato não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Contrato não encontrado"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/upload": {
             "post": {
                 "tags": [
@@ -80,6 +331,10 @@
         }
     },
     "tags": [
+        {
+            "name": "Contratos",
+            "description": "Contratos"
+        },
         {
             "name": "contrato",
             "description": "contrato"
